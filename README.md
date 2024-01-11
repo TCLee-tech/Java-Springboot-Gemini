@@ -35,3 +35,12 @@
 <hr>
 
 ### Install Cloud Code (if you have not done so)
+1. Click on "Extensions" icon [Ctrl+Shift+X] and search for "Google Cloud Code". Install.
+   - [Reference Guide](https://cloud.google.com/code/docs/vscode/install#install)
+
+
+2. Authenticate and log in to Google Cloud.
+   - click on **Cloud Code - Sign in** in the VS Code status bar.
+   - follow the instructions in this [section of the guide](https://cloud.google.com/code/docs/vscode/install#log_in_to)
+4. 
+   
