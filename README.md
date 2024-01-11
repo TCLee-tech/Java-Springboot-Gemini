@@ -29,4 +29,9 @@
 1. Open Visual Studio Code.
 2. From "Explorer" icon [Ctrl+Shift+E], click on "open a Java project folder".
 3. Select the SpringBoot MVC application folder you downloaded from Spring Initializr.
+   
+![VSCode](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/0f1724aafd9776d14cf0a9838a411c6cd02737d1/VSCode%20open%20Java%20project.jpg)
 
+<hr>
+
+### Install Cloud Code (if you have not done so)
