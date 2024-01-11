@@ -20,3 +20,8 @@
 3. Click "GENERATE" at bottom of page.
 4. The project is downloaded as a zipped folder. Extract the application sub-folder.
 
+![Spring initializr choices](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/6a551832a801d73e04e54c522ea8b6ef5c9079dc/spring%20initializr%20sample.jpg)  
+
+
+<hr>
+
