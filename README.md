@@ -1,7 +1,7 @@
 # Java-Springboot-Langchain-Germini
 
 
-### Create a Java SpringBoot application
+### Create a Java SpringBoot MVC application
 1. Go to [Spring Initializr](https://start.spring.io/)
 2. Select configuration. For example:
    - Project: Maven
@@ -24,4 +24,9 @@
 
 
 <hr>
+
+### Open Java SpringBoot MVC application in Visual Studio Code
+1. Open Visual Studio Code.
+2. From "Explorer" icon [Ctrl+Shift+E], click on "open a Java project folder".
+3. Select the SpringBoot MVC application folder you downloaded from Spring Initializr.
 
