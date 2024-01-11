@@ -50,8 +50,9 @@
 
 <hr>
 
-### Update Maven build file with the Google Cloud Libraries Bill-of-Materials (BOM) and Vertex AI's library.
-1. In VS Code, in your Java application folder, open pom.xml and add the following codes:
+### Update Maven build file.
+1. Add the Google Cloud Libraries Bill-of-Materials (BOM) and Vertex AI's library  
+   - In VS Code, in your Java application folder, open pom.xml and add the following codes:
 ```
 <dependencyManagement>
   <dependencies>
@@ -72,9 +73,20 @@
   </dependency>
 </dependencies>
 ```
+2. Add dependency for Cloud Run
+```
+---
+ <dependency>
+   <groupId>com.google.cloud</groupId>
+   <artifactId>google-cloud-run</artifactId>
+ </dependency>
+...
+```
+
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
-[Vertex AI API for Java](https://cloud.google.com/java/docs/reference/google-cloud-vertexai/latest/overview#use-the-vertexai-api-for-java)
+[Vertex AI API for Java](https://cloud.google.com/java/docs/reference/google-cloud-vertexai/latest/overview#use-the-vertexai-api-for-java)  
+[Cloud Run client library](https://cloud.google.com/java/docs/reference/google-cloud-run/latest/overview#use-the-cloud-run-for-java)
 
 ### Enable Vertex AI Gemini API in Google Cloud
 
@@ -83,3 +95,9 @@ References:
 https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quickstart-multimodal?hl=en#gemini-beginner-samples-java
 
 https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en
+
+https://cloud.google.com/java/getting-started/jib
+
+https://spring.io/guides/gs/serving-web-content/
+
+https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/
