@@ -107,6 +107,8 @@ References:
 [Cloud Run client library](https://cloud.google.com/java/docs/reference/google-cloud-run/latest/overview#use-the-cloud-run-for-java)
 [Apache Maven Compiler Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/3.12.1)  
 [Codelabs for Spring Boot on GCP](https://codelabs.developers.google.com/spring)  
+[Google Cloud Client Library for Java](https://github.com/googleapis/google-cloud-java)  
+
 
 ### Enable Vertex AI Gemini API in Google Cloud
 
