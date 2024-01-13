@@ -73,7 +73,7 @@
   </dependency>
 </dependencies>
 ```
-2. Add dependency for Cloud Run
+2. Add dependency for Cloud Run, if you are using Cloud Run
 ```
 ---
  <dependency>
@@ -82,11 +82,31 @@
  </dependency>
 ...
 ```
+3. Change compiler plugin to Apache Maven
+```
+...
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.12.1</version>
+			<configuration>
+				<source>21</source>
+				<target>21</target>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
+...
+```
 
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
 [Vertex AI API for Java](https://cloud.google.com/java/docs/reference/google-cloud-vertexai/latest/overview#use-the-vertexai-api-for-java)  
 [Cloud Run client library](https://cloud.google.com/java/docs/reference/google-cloud-run/latest/overview#use-the-cloud-run-for-java)
+[Apache Maven Compiler Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/3.12.1)  
+[Codelabs for Spring Boot on GCP](https://codelabs.developers.google.com/spring)  
 
 ### Enable Vertex AI Gemini API in Google Cloud
 
