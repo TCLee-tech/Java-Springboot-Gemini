@@ -109,6 +109,10 @@ References:
 [Codelabs for Spring Boot on GCP](https://codelabs.developers.google.com/spring)  
 [Google Cloud Client Library for Java](https://github.com/googleapis/google-cloud-java)  
 
+### Google Cloud CLI
+The Google Cloud CLI gives you command line access to GCP services such as gcloud, bq and gsutil from your own computer. Follow this [guide](https://cloud.google.com/sdk/docs/install) if you need it.  
+
+Google Cloud CLI needs Python. If you have python installed on your computer, or prefers [Anaconda](https://www.anaconda.com/download), update your computer system's environment variables to point to your Python installation. You need to add variable: "CLOUDSDK_PYTHON" and value: "C:\path_to_your\anaconda3\python.exe" to the User variables section.
 
 ### Enable Vertex AI Gemini API in Google Cloud
 
