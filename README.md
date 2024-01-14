@@ -22,7 +22,7 @@
 
 ![Spring initializr choices](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/cf569ad5d605b19f0f3ba69e0679528cf954e137/spring%20initializr%20sample.jpg)  
 
-If you wish to follow the sample package import codes in Google's documentation [here](https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en#gemini-chat-samples-java), you need to have your directory structure as src/main/java/com/google/cloud/[file name]. If you are using your own "Group" and "Artifact" names, change the sample codes from Google's documentation to fit your requirement.
+If you wish to follow the sample package import codes in Google's documentation [here](https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en#gemini-chat-samples-java), pay attention to your directory structure: src/main/java/com/google/cloud/[file name]. If you are using your own "Group" and "Artifact" names, change the sample codes from Google's documentation to fit your requirement.
 ![Vertex AI package import in Java file](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/f4a4cc3f672800055b6551ae1b9685909e9dce13/package%20import%20path.jpg)
 
 <hr>
@@ -33,6 +33,8 @@ If you wish to follow the sample package import codes in Google's documentation 
 3. Select the Java application folder you downloaded from Spring Initializr.
    
 ![VSCode](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/0f1724aafd9776d14cf0a9838a411c6cd02737d1/VSCode%20open%20Java%20project.jpg)
+
+* You can also create the Java project from within VS Code.
 
 <hr>
 
@@ -127,10 +129,24 @@ Log in with your GCP username and password.
 
 <hr>
 
+### Enable Cloud Run API
+```
+gcloud services enable run.googleapis.com
+```
+### Enable Artifact Registry API
+```
+gcloud services enable artifactregistry.googleapis.com
+```
+Authenticate to your private Docker repositories in Artifact Registry
+```
+gcloud auth configure-docker
+```
+
 ### Enable Vertex AI Gemini API in Google Cloud
 
-Cloud Run Admin API
-Optional: Cloud Logging, Error Reporting APIs
+```
+gcloud services enable aiplatform.googleapis.com
+```
 
 https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quickstart-multimodal?hl=en#gemini-beginner-samples-java
 
@@ -147,12 +163,15 @@ https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/
 [Cloud Run](https://cloud.google.com/run?hl=en) is severless for containers.  
 First, build OCI-compliant images using [Jib](https://github.com/GoogleContainerTools/jib). Jib does not require Dockerfile and is daemonless.
 ```
-./mvnw compile jib:build -Dimage=<your image, eg. gcr.io/PROJECT_ID/IMAGE_NAME> 
+./mvn compile jib:build -Dimage=<your image, eg. gcr.io/PROJECT_ID/IMAGE_NAME> 
 ```
 - check: mvn package jib:build -Dimage=gcr.io/PROJECT_ID/IMAGE_NAME   
 
 Deploy image to Cloud Run:
 ```
-gcloud run deploy <name of deployment> --image gcr.io/PROJECT_ID/IMAGE_NAME \
---platform managed --region <REGION> --allow-unauthenticated
+gcloud run deploy <name of deployment> \
+--image gcr.io/PROJECT_ID/IMAGE_NAME \
+--region <REGION> \
+--platform managed \
+--allow-unauthenticated
 ```
