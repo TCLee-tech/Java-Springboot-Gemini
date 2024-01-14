@@ -105,20 +105,32 @@ If you wish to follow the sample package import codes in Google's documentation 
 
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
-[Java client library for Vertex AI](https://cloud.google.com/java/docs/reference/google-cloud-vertexai/latest/overview#use-the-vertexai-api-for-java)  
+[Java client library for Vertex AI](https://cloud.google.com/java/docs/reference/google-cloud-vertexai/latest/overview#use-the-vertexai-api-for-java) - if you use Gradle to import dependencies, there is info here.   
 [Java client library for Cloud Run](https://cloud.google.com/java/docs/reference/google-cloud-run/latest/overview#use-the-cloud-run-for-java)  
 [MVN Repository page for Apache Maven Compiler Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/3.12.1)  
 [Codelabs for Spring Boot on GCP](https://codelabs.developers.google.com/spring)  
 [Google Cloud Java Client Libraries Github](https://github.com/googleapis/google-cloud-java)  
+
+<hr>
 
 ### Google Cloud CLI
 The Google Cloud CLI gives you command line access to GCP services such as gcloud, bq and gsutil from your own computer. Follow this [guide](https://cloud.google.com/sdk/docs/install) if you need it.  
 
 Google Cloud CLI needs Python. If you have python installed on your computer, or prefers [Anaconda](https://www.anaconda.com/download), update your computer system's environment variables to point to your Python installation. You need to add variable: "CLOUDSDK_PYTHON" and value: "C:\path_to_your\anaconda3\python.exe" to the User variables section.
 
+### Authenticate from your local environment to Google Cloud
+On your computer, in the Google Cloud SDK Shell created when you installed Google Cloud CLI, enter
+```
+gcloud auth application=default login
+```
+Log in with your GCP username and password.
+
+<hr>
+
 ### Enable Vertex AI Gemini API in Google Cloud
 
-
+Cloud Run Admin API
+Optional: Cloud Logging, Error Reporting APIs
 
 https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quickstart-multimodal?hl=en#gemini-beginner-samples-java
 
@@ -129,3 +141,18 @@ https://cloud.google.com/java/getting-started/jib
 https://spring.io/guides/gs/serving-web-content/
 
 https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/
+
+### Deploy application to Cloud Run 
+
+[Cloud Run](https://cloud.google.com/run?hl=en) is severless for containers.  
+First, build OCI-compliant images using [Jib](https://github.com/GoogleContainerTools/jib). Jib does not require Dockerfile and is daemonless.
+```
+./mvnw compile jib:build -Dimage=<your image, eg. gcr.io/PROJECT_ID/IMAGE_NAME> 
+```
+- check: mvn package jib:build -Dimage=gcr.io/PROJECT_ID/IMAGE_NAME   
+
+Deploy image to Cloud Run:
+```
+gcloud run deploy <name of deployment> --image gcr.io/PROJECT_ID/IMAGE_NAME \
+--platform managed --region <REGION> --allow-unauthenticated
+```
