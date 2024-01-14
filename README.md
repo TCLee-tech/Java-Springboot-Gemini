@@ -20,8 +20,10 @@
 3. Click "GENERATE" at bottom of page.
 4. The project is downloaded as a zipped folder. Extract the application sub-folder.
 
-![Spring initializr choices](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/6a551832a801d73e04e54c522ea8b6ef5c9079dc/spring%20initializr%20sample.jpg)  
+![Spring initializr choices](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/cf569ad5d605b19f0f3ba69e0679528cf954e137/spring%20initializr%20sample.jpg)  
 
+If you wish to follow the sample package import codes in Google's documentation [here](https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en#gemini-chat-samples-java), you need to have your directory structure as src/main/java/com/google/cloud/[file name]. If you are using your own "Group" and "Artifact" names, change the sample codes from Google's documentation to fit your requirement.
+![Vertex AI package import in Java file]()
 
 <hr>
 
