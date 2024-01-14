@@ -52,7 +52,7 @@ If you wish to follow the sample package import codes in Google's documentation 
 
 <hr>
 
-### Update Maven build file.
+### Update Maven build file (pom.xml).
 1. Add the Google Cloud Libraries Bill-of-Materials (BOM) and Vertex AI's library  
    - In VS Code, in your Java application folder, open pom.xml and add the following codes:
 ```
