@@ -152,11 +152,12 @@ https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quicksta
 
 https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en
 
-https://cloud.google.com/java/getting-started/jib
 
 https://spring.io/guides/gs/serving-web-content/
 
 https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/
+
+<hr>
 
 ### Deploy application to Cloud Run 
 
@@ -166,6 +167,8 @@ First, build OCI-compliant images using [Jib](https://github.com/GoogleContainer
 ./mvn compile jib:build -Dimage=<your image, eg. gcr.io/PROJECT_ID/IMAGE_NAME> 
 ```
 - check: mvn package jib:build -Dimage=gcr.io/PROJECT_ID/IMAGE_NAME   
+
+Reference: [Building Java containers with jib](https://cloud.google.com/java/getting-started/jib)  
 
 Deploy image to Cloud Run:
 ```
