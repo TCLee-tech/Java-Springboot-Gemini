@@ -105,11 +105,11 @@ If you wish to follow the sample package import codes in Google's documentation 
 
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
-[Vertex AI API for Java](https://cloud.google.com/java/docs/reference/google-cloud-vertexai/latest/overview#use-the-vertexai-api-for-java)  
-[Cloud Run client library](https://cloud.google.com/java/docs/reference/google-cloud-run/latest/overview#use-the-cloud-run-for-java)
-[Apache Maven Compiler Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/3.12.1)  
+[Java client library for Vertex AI](https://cloud.google.com/java/docs/reference/google-cloud-vertexai/latest/overview#use-the-vertexai-api-for-java)  
+[Java client library for Cloud Run](https://cloud.google.com/java/docs/reference/google-cloud-run/latest/overview#use-the-cloud-run-for-java)  
+[MVN Repository page for Apache Maven Compiler Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/3.12.1)  
 [Codelabs for Spring Boot on GCP](https://codelabs.developers.google.com/spring)  
-[Google Cloud Client Library for Java](https://github.com/googleapis/google-cloud-java)  
+[Google Cloud Java Client Libraries Github](https://github.com/googleapis/google-cloud-java)  
 
 ### Google Cloud CLI
 The Google Cloud CLI gives you command line access to GCP services such as gcloud, bq and gsutil from your own computer. Follow this [guide](https://cloud.google.com/sdk/docs/install) if you need it.  
