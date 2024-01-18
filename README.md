@@ -2,7 +2,9 @@
 
 ### Install Java and Maven (if you have not done so)
 Check if you have installed JDK and Maven.
-If you need to, install the [JDK 21](https://www.oracle.com/java/technologies/downloads/#jdk21-windows) and the [Maven binary zip archive](https://maven.apache.org/download.cgi)   
+If you need to, install [JDK 21](https://www.oracle.com/java/technologies/downloads/#jdk21-windows) and the [Maven binary zip archive](https://maven.apache.org/download.cgi)   
+
+![JRE and Maven installation](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/edf93545d127d8ce2aa4071ea81ade0aa8092942/jdk%20and%20maven%20install.jpg)  
 
 Add the following entries to your computer's system environment variables:      
 
@@ -15,6 +17,8 @@ Variable name: Path		Variable value: %MAVEN_HOME%\bin
 To verify, in cmd.exe, enter
 `java --version` and `mvn -version`.
 You should get info on your java and maven installations if successful.
+
+<hr>
 
 ### Create a Java Spring application
 1. Go to [Spring Initializr](https://start.spring.io/)
@@ -37,7 +41,7 @@ You should get info on your java and maven installations if successful.
 
 ![Spring initializr choices](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/cf569ad5d605b19f0f3ba69e0679528cf954e137/spring%20initializr%20sample.jpg)  
 
-If you wish to follow the sample package import codes in Google's documentation [here](https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en#gemini-chat-samples-java), pay attention to your directory structure: src/main/java/com/google/cloud/[file name]. If you are using your own "Group" and "Artifact" names, change the sample codes from Google's documentation to fit your requirement.
+If you wish to follow the sample package import codes in Google's documentation [here](https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en#gemini-chat-samples-java), pay attention to your directory structure: src/main/java/com/google/cloud/[file name]. If you are using your own "Group" and "Artifact" names, change the directory path to fit your requirement.
 ![Vertex AI package import in Java file](https://github.com/TCLee-tech/Java-Springboot-Langchain-Germini/blob/f4a4cc3f672800055b6551ae1b9685909e9dce13/package%20import%20path.jpg)
 
 <hr>
