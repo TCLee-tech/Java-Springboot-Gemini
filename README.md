@@ -123,7 +123,7 @@ Google Cloud CLI needs Python. If you have python installed on your computer, or
 ### Authenticate from your local environment to Google Cloud
 On your computer, in the Google Cloud SDK Shell created when you installed Google Cloud CLI, enter
 ```
-gcloud auth application=default login
+gcloud auth application-default login
 ```
 Log in with your GCP username and password.
 
