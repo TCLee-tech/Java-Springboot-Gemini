@@ -1,5 +1,20 @@
-# Java-Springboot-Langchain-Germini
+# Java-Springboot-Germini
 
+### Install Java and Maven (if you have not done so)
+Check if you have installed JDK and Maven.
+If you need to, install the [JDK 21](https://www.oracle.com/java/technologies/downloads/#jdk21-windows) and the [Maven binary zip archive](https://maven.apache.org/download.cgi)   
+
+Add the following entries to your computer's system environment variables:      
+
+Variable name: JAVA_HOME	Variable value: C:\Program Files\Java\jdk-21 [path to jdk exe file]  
+Variable name: Path		Variable value: C:\Program Files\Java\jdk-21\bin    
+
+Variable name: MAVEN_HOME	Variable value: C:\Program Files\apache-maven-3.9.6 [path to unzipped Maven folder]  
+Variable name: Path		Variable value: %MAVEN_HOME%\bin  
+
+To verify, in cmd.exe, enter
+`java --version` and `mvn -version`.
+You should get info on your java and maven installations if successful.
 
 ### Create a Java Spring application
 1. Go to [Spring Initializr](https://start.spring.io/)
@@ -104,6 +119,19 @@ If you wish to follow the sample package import codes in Google's documentation 
 </build>
 ...
 ```
+4. Add jib-maven-plugin
+```
+<plugin>
+  <groupId>com.google.cloud.tools</groupId>
+  <artifactId>jib-maven-plugin</artifactId>
+  <version>3.4.0</version>
+  <configuration>
+    <to>
+      <image>gcr.io/PROJECT/IMAGE</image>
+    </to>
+  </configuration>
+</plugin>
+```
 
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
@@ -112,7 +140,7 @@ References:
 [MVN Repository page for Apache Maven Compiler Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/3.12.1)  
 [Codelabs for Spring Boot on GCP](https://codelabs.developers.google.com/spring)  
 [Google Cloud Java Client Libraries Github](https://github.com/googleapis/google-cloud-java)  
-
+[jib-maven-plugin in Maven Central Repository](https://central.sonatype.com/artifact/com.google.cloud.tools/jib-maven-plugin/overview)
 <hr>
 
 ### Google Cloud CLI
@@ -129,11 +157,12 @@ Log in with your GCP username and password.
 
 <hr>
 
-### Enable Cloud Run API
+### Enable Cloud Run API (one time) 
+In the Google Cloud SDK Shell,
 ```
 gcloud services enable run.googleapis.com
 ```
-### Enable Artifact Registry API
+### Enable Artifact Registry API (one time)
 ```
 gcloud services enable artifactregistry.googleapis.com
 ```
@@ -142,7 +171,7 @@ Authenticate to your private Docker repositories in Artifact Registry
 gcloud auth configure-docker
 ```
 
-### Enable Vertex AI Gemini API in Google Cloud
+### Enable Vertex AI Gemini API in Google Cloud (one time)
 
 ```
 gcloud services enable aiplatform.googleapis.com
@@ -164,7 +193,7 @@ https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/
 [Cloud Run](https://cloud.google.com/run?hl=en) is severless for containers.  
 First, build OCI-compliant images using [Jib](https://github.com/GoogleContainerTools/jib). Jib does not require Dockerfile and is daemonless.
 ```
-./mvn compile jib:build -Dimage=<your image, eg. gcr.io/PROJECT_ID/IMAGE_NAME> 
+mvn compile jib:build -Dimage=<your image, eg. gcr.io/PROJECT_ID/IMAGE_NAME> 
 ```
 - check: mvn package jib:build -Dimage=gcr.io/PROJECT_ID/IMAGE_NAME   
 
