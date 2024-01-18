@@ -126,16 +126,23 @@ If you wish to follow the sample package import codes in Google's documentation 
 4. Add jib-maven-plugin
 ```
 <plugin>
-  <groupId>com.google.cloud.tools</groupId>
-  <artifactId>jib-maven-plugin</artifactId>
-  <version>3.4.0</version>
-  <configuration>
-    <to>
-      <image>gcr.io/PROJECT/IMAGE</image>
-    </to>
-  </configuration>
+	<groupId>com.google.cloud.tools</groupId>
+	<artifactId>jib-maven-plugin</artifactId>
+	<version>3.4.0</version>
+	<configuration>
+	  <from>
+		<image>gcr.io/distroless/java21-debian12</image>
+	  </from>
+	  <to>
+		<image>gcr.io/[GCP_Project_ID]/[IMAGE_NAME]</image>
+	  </to>
+	</configuration>
 </plugin>
 ```
+  - replace [GCP_Project_ID] with the name of your GCP Project.
+  - replace [IMAGE_NAME] with your preferred image name.
+  - as of the time of writing, Jib only supports base image for Java 17. So, [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration) is configured here to use the [distroless JRE-21 base image](https://github.com/GoogleContainerTools/distroless/issues/1405).
+
 
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
@@ -195,19 +202,18 @@ https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/
 ### Deploy application to Cloud Run 
 
 [Cloud Run](https://cloud.google.com/run?hl=en) is severless for containers.  
-First, build OCI-compliant images using [Jib](https://github.com/GoogleContainerTools/jib). Jib does not require Dockerfile and is daemonless.
+First, build OCI-compliant images using [Jib](https://github.com/GoogleContainerTools/jib). Jib does not require Dockerfile and is daemonless. In the VS Code terminal, run:
 ```
-mvn compile jib:build -Dimage=<your image, eg. gcr.io/PROJECT_ID/IMAGE_NAME> 
+mvn compile jib:build
 ```
-- check: mvn package jib:build -Dimage=gcr.io/PROJECT_ID/IMAGE_NAME   
 
 Reference: [Building Java containers with jib](https://cloud.google.com/java/getting-started/jib)  
 
-Deploy image to Cloud Run:
+Shipping the code. To deploy image to Cloud Run, in the Google Cloud SDK shell, run:
 ```
-gcloud run deploy <name of deployment> \
---image gcr.io/PROJECT_ID/IMAGE_NAME \
---region <REGION> \
+gcloud run deploy <your name for the Cloud Run Service> \
+--image gcr.io/[PROJECT_ID]/[IMAGE_NAME] \
+--region [REGION] \
 --platform managed \
 --allow-unauthenticated
 ```
