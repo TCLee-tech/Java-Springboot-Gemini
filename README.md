@@ -429,7 +429,7 @@ public class Application2 {
 
 
     // TODO(developer): Replace these variables
-    String projectId = "groovy-reserve-409912";
+    String projectId = "groovy-orange-123456";
     String location = "us-central1";
     String modelName = "gemini-pro-vision";	
 
