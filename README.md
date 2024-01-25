@@ -397,6 +397,8 @@ fieldset {
 ```   
 There is a service interface and a service class that contains the business logic, does the work of calling the GenAI model (to be modified according to needs).
 
+![Thymeleaf UI](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/0fb042c9cf386406ea3837165d044e982ae05c59/thymeleaf%20UI.jpg)   
+
 <hr>
 
 ### Codes that call the Gemini Pro Vision model with 2 modalities of input - picture and text
