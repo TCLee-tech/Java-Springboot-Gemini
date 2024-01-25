@@ -1,5 +1,9 @@
 # Java-Springboot-Germini
 
+☀️ Java 21 container ☀️Severless (Cloud Run) ☀️ Jib ☀️Generative AI dual-modality (Gemini Pro Vision, image + text)   
+
+Steps:   
+
 ### Install Java and Maven (if you have not done so)
 Check if you have installed JDK and Maven.
 If you need to, install [JDK 21](https://www.oracle.com/java/technologies/downloads/#jdk21-windows) and the [Maven binary zip archive](https://maven.apache.org/download.cgi)   
@@ -241,7 +245,7 @@ If successful, you should get a Cloud Run service URL:
 
 ### Thymeleaf UI
 
-You may want a html page where you can enter values, attach files (need code modification). One option for server-side rendering of a UI is to use Thymeleaf. There are alternatives to Thymeleaf. There is also an option to code a frontend interface (Javascript, Python, React, NextJS, Angular etc).   
+You may want a html page where you can enter values, attach files (need code modification). One option for server-side rendering of a UI is to use Thymeleaf. There are alternatives to Thymeleaf. It is also an option to code a frontend interface (Javascript, Python, React, NextJS, Angular etc).   
 
 For thymeleaf,
    - a "controller" that maps the GET, POST methods
@@ -495,13 +499,16 @@ public class Application2 {
 ```   
 The above codes may be modified to suit your game. There is a List<Content> arrayList to hold the inputs to the AI model. This may be "memory" for simple use cases.
 
-As an example, using a picture of a beef wellington, the output is:
+As an example, using a picture of a beef wellington, 
+![Gordon Ramsey's beef wellington](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/b62dfbdca3817badf9763b5511a32a60d3811d3a/Gordon%20Ramsey%20Beef%20Wellington.jpg)
+
+the output is:
 ![gemini pro output 1](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput1.jpg)   
 
 ![gemini pro output 2](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput2.jpg)
 
 ![gemini pro output 3](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput3.jpg)   
 
-
+Codes are in the "demo" folder.
 
 
