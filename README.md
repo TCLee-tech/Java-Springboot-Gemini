@@ -221,6 +221,8 @@ First, build OCI-compliant images using [Jib](https://github.com/GoogleContainer
 ```
 mvn compile jib:build
 ```
+If successful, you should see:
+![jib build successful](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8f9995c4dc287f63c919377ea6c0f80d2f147f88/successful%20Jib%20build.jpg)  
 
 Reference: [Building Java containers with jib](https://cloud.google.com/java/getting-started/jib)  
 
@@ -232,6 +234,9 @@ gcloud run deploy <your name for the Cloud Run Service> \
 --platform managed \
 --allow-unauthenticated
 ```
+If successful, you should get a Cloud Run service URL:
+![Cloud Run service URL](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8f9995c4dc287f63c919377ea6c0f80d2f147f88/cloud%20run%20thymeleaf%20UI.jpg)
+
 <hr>
 
 ### Thymeleaf UI
