@@ -141,7 +141,11 @@ If you wish to follow the sample package import codes in Google's documentation 
 ```
   - replace [GCP_Project_ID] with the name of your GCP Project.
   - replace [IMAGE_NAME] with your preferred image name.
-  - as of the time of writing, Jib only supports base image for Java 17. So, [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration) is configured here to use the [distroless JRE-21 base image](https://github.com/GoogleContainerTools/distroless/issues/1405).  
+  - Jib is an open-source project.
+  - As of the time of writing, Jib only supports base image for Java 17. So, [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration) is configured here to use the [distroless JRE-21 base image](https://github.com/GoogleContainerTools/distroless/issues/1405). 
+  - Jib also works with Amazon Elastic Container Registry, Azure Container Registry and Docker Hub Registry.
+  - The base image and container registry can be changed as needed.
+  - [Cloud Build](https://cloud.google.com/build/docs/overview) is the Google tool that also allows you to build containers without a Dockerfile or build config file. It is related to [Buildpacks](https://buildpacks.io/), a Cloud Native Computing Foundation project.
 
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
