@@ -1,4 +1,4 @@
-# Severless Java21 container to access Generative AI
+# Severless Java21 container for Generative AI (Gemini Pro Vision)
 
 ☀️ Java 21 container ☀️Severless (Cloud Run) ☀️ Jib ☀️Generative AI dual-modality (Gemini Pro Vision, image + text)   
 
