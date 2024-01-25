@@ -141,8 +141,7 @@ If you wish to follow the sample package import codes in Google's documentation 
 ```
   - replace [GCP_Project_ID] with the name of your GCP Project.
   - replace [IMAGE_NAME] with your preferred image name.
-  - as of the time of writing, Jib only supports base image for Java 17. So, [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration) is configured here to use the [distroless JRE-21 base image](https://github.com/GoogleContainerTools/distroless/issues/1405).
-
+  - as of the time of writing, Jib only supports base image for Java 17. So, [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration) is configured here to use the [distroless JRE-21 base image](https://github.com/GoogleContainerTools/distroless/issues/1405).  
 
 References:  
 [Google Cloud Libraries Bill-of-Materials](https://github.com/googleapis/java-cloud-bom)   
@@ -152,6 +151,18 @@ References:
 [Codelabs for Spring Boot on GCP](https://codelabs.developers.google.com/spring)  
 [Google Cloud Java Client Libraries Github](https://github.com/googleapis/google-cloud-java)  
 [jib-maven-plugin in Maven Central Repository](https://central.sonatype.com/artifact/com.google.cloud.tools/jib-maven-plugin/overview)
+
+5. Add Project Lombok (optional).
+   - if you wish to use @Data annotation in Plain Old Java Object(POJO) model and not type out getters and setters, you can add Project Lombok.
+```
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+    		<groupId>org.projectlombok</groupId>
+    		<artifactId>lombok</artifactId>
+		<version>1.18.30</version>
+		<scope>provided</scope>
+	</dependency>
+```
 <hr>
 
 ### Google Cloud CLI
@@ -217,3 +228,260 @@ gcloud run deploy <your name for the Cloud Run Service> \
 --platform managed \
 --allow-unauthenticated
 ```
+<hr>
+
+### Thymeleaf UI
+
+You may want a html page where you can enter values, attach files (need code modification). One option for server-side rendering of a UI is to use Thymeleaf. There are alternatives to Thymeleaf. There is also an option to code a frontend interface (Javascript, Python, React, NextJS, Angular etc).   
+
+For thymeleaf,
+   - a "controller" that maps the GET, POST methods
+   - a html page (called index.html in my file) under `src/main/resource/static/templates/xxx.html` folder
+   - any css needs to go under `src/main/resource/static/css/style.css`
+
+TemplateController.java
+```
+package com.google.cloud;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/")
+// don't name the class below "Controller" to avoid confusion with the @Controller annotation. Custom annovations are Java classes.
+public class TemplateController {
+
+    /*
+    a reference to a Service interface -> class that will do actual work of calling GenAI model
+    private final ServiceInterface service;
+
+    public UseController (ServiceInterface service) {
+        this.service = service;
+    }
+     */
+
+    @GetMapping("/")
+    public String showUserEntryForm (Model model) {
+
+        //adding the attribute(key-value pair)
+        model.addAttribute("pojo", new Pojo());
+        //returning the view name
+        return "index";
+    }
+
+    //when user submits form, this method is called
+    @PostMapping("/")
+    public String submitForm(@ModelAttribute("pojo") Pojo pojo, Model model) {
+        System.out.println(pojo);    
+        //call to service interface/class for work with GenAI model
+        //service.usePojo(pojo.toParameters())
+        return "redirect:index";
+    }
+}    
+```  
+
+index.html
+```
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <title>UI for Google's Gemini Pro Vision</title>
+</head>
+
+<body>
+    <h1> Welcome to the test page for Google's Gemini Pro Vision</h1>
+
+    <form action="#" th:action="@{/}" method="POST" th:object="${pojo}">
+
+    <div class="input-field">    
+        <div><label for="projectId">Project ID: </label></div>
+        <input id="projectId" type="text" size="100" th:field="*{projectId}" />   
+    </div>
+    
+    <div class="input-field">    
+        <div><label for="location">Model location: </label></div>
+        <input id="location" type="text" size="100" th:field="*{location}" />   
+    </div>
+
+    <div class="input-field">    
+    <div><label for="imageUri">URI to your image file: </label></div>
+    <input id="imageUri" type="text" size="100" th:field="*{imageUri}" />   
+    </div>
+
+    <div class="input-field">
+    <div><label for="prompt">Prompt:</label></div>
+    <textarea id="prompt" th:field="*{prompt}" rows="4" cols="50"></textarea>
+    </div>    
+    
+    <fieldset>
+        <legend>Gemini Pro Vision model settings (default provided):</legend>
+
+        <div>
+        <div><label for="maxOutputTokens">Max Output Tokens</label></div>
+        <input id="maxOutputTokens" type="number" min="1" max="2048" placeholder="2048" th:field="*{maxOutputTokens}" />
+        </div>
+        
+        <div>
+        <div><label for="temp">Temperature</label></div>
+        <input id="temp" type="number" min="0" max="1" step="0.01" placeholder="0.4" th:field="*{temp}" />
+        </div>
+
+        <div>
+        <div><label for="topK">Top K</label></div>
+        <input id="topK" type="number" min="1" max="40" step="0.01" placeholder="32" th:field="*{topK}" />
+        </div>
+
+        <div>
+        <div><label for="topP">Top P</label></div>
+        <input id="topP" type="number" min="0" max="1" step="0.01" placeholder="1" th:field="*{topP}" />   
+        </div>
+
+    </fieldset>
+
+    <input type="submit" value="Submit" />
+    
+    </form>    
+
+</body>
+
+</html>
+```
+
+style.css   
+```
+h1 {
+    color:blue;
+    font-size: 40px;
+}
+
+.input-field {
+    margin: 2rem;
+    line-height: 200%;
+}
+
+fieldset {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: hsl(0, 0%, 100%);
+    border: 4px solid hsl(0, 0%, 90%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    line-height: 200%;
+    margin: 2rem;
+  }
+
+  input[type=submit]{
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 2rem;
+    cursor: pointer;
+}
+```   
+There is a service interface and a service class that contains the business logic, does the work of calling the GenAI model (to be modified according to needs).
+
+<hr>
+
+### Codes that call the Gemini Pro Vision model with 2 modalities of input - picture and text
+
+Alternatively, the following codes will call the Gemini multi-modal model with a picture in Google Cloud Storage and your prompt/query, but the response from the Gemini model will be streamed in the VS Code terminal.
+
+```   
+package com.google.cloud;
+
+import com.google.cloud.vertexai.VertexAI;
+import com.google.cloud.vertexai.api.Content;
+import com.google.cloud.vertexai.api.GenerateContentResponse;
+import com.google.cloud.vertexai.api.GenerationConfig;
+import com.google.cloud.vertexai.generativeai.preview.ContentMaker;
+import com.google.cloud.vertexai.generativeai.preview.GenerativeModel;
+import com.google.cloud.vertexai.generativeai.preview.PartMaker;
+import com.google.cloud.vertexai.generativeai.preview.ResponseStream;
+
+import java.util.*;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.io.IOException;
+
+
+@SpringBootApplication
+public class Application2 {
+	
+	//main method
+	public static void main(String[] args) throws IOException {
+		SpringApplication.run(Application.class, args);
+
+
+    // TODO(developer): Replace these variables
+    String projectId = "groovy-reserve-409912";
+    String location = "us-central1";
+    String modelName = "gemini-pro-vision";	
+
+	//calling input() method
+	input(projectId, location, modelName);
+    }
+
+
+	// Definition of input() method that takes 3 parameters
+	public static void input(String projectId, String location, String modelName) throws IOException {
+		
+		//one-time initialization of new VertexAI instance
+		try (VertexAI vertexAI = new VertexAI(projectId, location);) {
+
+		//Set parameters for GenAI model (max_output_tokens,temp,top-K, top-P)	
+		GenerationConfig generationConfig = GenerationConfig.newBuilder()
+											.setMaxOutputTokens(2048)
+											.setTemperature(0.4f)
+											.setTopK(32)
+											.setTopP(1)
+											.build();
+
+		/* Image files must be in Google Cloud Storage
+		URI of image file - Only image/png and image/jpeg are supported. 258 tokens per image. 
+		Only gsutil of syntax gs://xxx.jpg and gs://yyy.png are supported.
+		 */
+		String imageUri = "gs://images_genai/Gordon Ramsey Beef Wellington.jpg";
+
+		//query from user	
+		String query="Please give me the receipe to make this dish?";
+
+		//gets Generative AI model
+		GenerativeModel model = new GenerativeModel(modelName, generationConfig,vertexAI);
+
+		//an ArrayList to store inputs to GenAI model
+		List<Content> contents = new ArrayList<>();	
+
+		//pass in image bytes and query about image
+		contents.add(ContentMaker
+				.fromMultiModalData(
+					PartMaker.fromMimeTypeAndData("image/jpeg", imageUri), 
+					query));
+
+		//model's generateContentStream method
+		ResponseStream<GenerateContentResponse> responseStream = model.generateContentStream(contents);
+
+		responseStream.stream().forEach(System.out::println);
+		}
+	}	
+}
+```   
+The above codes may be modified to suit your game. There is a List<Content> arrayList to hold the inputs to the AI model. This may be "memory" for simple use cases.
+
+
+
+
