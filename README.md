@@ -397,7 +397,8 @@ There is a service interface and a service class that contains the business logi
 
 ### Codes that call the Gemini Pro Vision model with 2 modalities of input - picture and text
 
-Alternatively, the following codes will call the Gemini multi-modal model with a picture in Google Cloud Storage and your prompt/query, but the response from the Gemini model will be streamed in the VS Code terminal.
+Alternatively, the following codes will call the Gemini multi-modal model with a picture in Google Cloud Storage and your prompt/query, but the response from the Gemini model will be streamed in the VS Code terminal.   
+You will need to remove the Thymeleaf UI codes and modify the TemplateController.java codes.
 
 ```   
 package com.google.cloud;
@@ -445,11 +446,11 @@ public class Application2 {
 
 		//Set parameters for GenAI model (max_output_tokens,temp,top-K, top-P)	
 		GenerationConfig generationConfig = GenerationConfig.newBuilder()
-											.setMaxOutputTokens(2048)
-											.setTemperature(0.4f)
-											.setTopK(32)
-											.setTopP(1)
-											.build();
+							.setMaxOutputTokens(2048)
+							.setTemperature(0.4f)
+							.setTopK(32)
+							.setTopP(1)
+							.build();
 
 		/* Image files must be in Google Cloud Storage
 		URI of image file - Only image/png and image/jpeg are supported. 258 tokens per image. 
@@ -468,9 +469,9 @@ public class Application2 {
 
 		//pass in image bytes and query about image
 		contents.add(ContentMaker
-				.fromMultiModalData(
-					PartMaker.fromMimeTypeAndData("image/jpeg", imageUri), 
-					query));
+			.fromMultiModalData(
+				PartMaker.fromMimeTypeAndData("image/jpeg", imageUri), query)
+				);
 
 		//model's generateContentStream method
 		ResponseStream<GenerateContentResponse> responseStream = model.generateContentStream(contents);
