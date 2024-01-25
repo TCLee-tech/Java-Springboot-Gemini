@@ -1,4 +1,4 @@
-# Java-Springboot-Germini
+# Severless Java21 container to access Generative AI
 
 ☀️ Java 21 container ☀️Severless (Cloud Run) ☀️ Jib ☀️Generative AI dual-modality (Gemini Pro Vision, image + text)   
 
