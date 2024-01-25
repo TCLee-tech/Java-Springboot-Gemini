@@ -408,9 +408,10 @@ There is a service interface and a service class that contains the business logi
 
 ### Codes that call the Gemini Pro Vision model with 2 modalities of input - picture and text
 
-Alternatively, the following codes will call the Gemini multi-modal model with a picture in Google Cloud Storage and your prompt/query, but the response from the Gemini model will be streamed in the VS Code terminal.   
-You will need to remove the Thymeleaf UI codes and modify the TemplateController.java codes.
+The codes below can be used with the Gemini Pro Vision multi-modal model. Input, in this example, are a jpeg/png file(object) in Google Cloud Storage and a prompt/query. Response from the Gemini model is streamed into the VS Code terminal.   
 
+
+Application.java   
 ```   
 package com.google.cloud;
 
@@ -493,6 +494,13 @@ public class Application2 {
 }
 ```   
 The above codes may be modified to suit your game. There is a List<Content> arrayList to hold the inputs to the AI model. This may be "memory" for simple use cases.
+
+As an example, using a picture of a beef wellington, the output is:
+![gemini pro output 1](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput1.jpg)   
+
+![gemini pro output 2](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput2.jpg)
+
+![gemini pro output 3](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput3.jpg)   
 
 
 
