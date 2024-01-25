@@ -207,14 +207,13 @@ gcloud auth configure-docker
 gcloud services enable aiplatform.googleapis.com
 ```
 
-https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quickstart-multimodal?hl=en#gemini-beginner-samples-java
+![Gemini beginner samples in Java](https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quickstart-multimodal?hl=en#gemini-beginner-samples-java)
 
-https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en
+![Send chat prompt requests (Gemini](https://cloud.google.com/vertex-ai/docs/generative-ai/multimodal/send-chat-prompts-gemini?hl=en)
 
+![Serving web content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 
-https://spring.io/guides/gs/serving-web-content/
-
-https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/
+![Get Started with Gemini in Java](https://glaforge.dev/posts/2023/12/13/get-started-with-gemini-in-java/)
 
 <hr>
 
