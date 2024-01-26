@@ -512,4 +512,4 @@ There are many potential use cases:. For example, you can call supermarket or e-
 
 Codes are in the "demo" folder.  
 
-GPT4 by OpenAI also has dual-modality capability.  
+GPT4 by OpenAI has dual-modality capability too.  
