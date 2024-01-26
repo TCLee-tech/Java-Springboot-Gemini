@@ -436,7 +436,7 @@ import java.io.IOException;
 
 
 @SpringBootApplication
-public class Application2 {
+public class Application {
 	
 	//main method
 	public static void main(String[] args) throws IOException {
@@ -471,7 +471,7 @@ public class Application2 {
 		URI of image file - Only image/png and image/jpeg are supported. 258 tokens per image. 
 		Only gsutil of syntax gs://xxx.jpg and gs://yyy.png are supported.
 		 */
-		String imageUri = "gs://images_genai/Gordon Ramsey Beef Wellington.jpg";
+		String imageUri = "gs://images_genai/Gordon Ramsay Beef Wellington.jpg";
 
 		//query from user	
 		String query="Please give me the receipe to make this dish?";
@@ -499,7 +499,7 @@ public class Application2 {
 The above codes may be modified to suit your game. There is a List<Content> arrayList to hold the inputs to the AI model. This may be "memory" for simple use cases.
 
 As an example, using a picture of a beef wellington, 
-![Gordon Ramsey's beef wellington](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/b62dfbdca3817badf9763b5511a32a60d3811d3a/Gordon%20Ramsey%20Beef%20Wellington.jpg)
+![Gordon Ramsay's beef wellington](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/b62dfbdca3817badf9763b5511a32a60d3811d3a/Gordon%20Ramsey%20Beef%20Wellington.jpg)
 
 the output is:
 ![gemini pro output 1](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput1.jpg)   
@@ -508,6 +508,8 @@ the output is:
 
 ![gemini pro output 3](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput3.jpg)   
 
-Codes are in the "demo" folder.
+There are many potential use cases:. For example, you can call supermarket or e-commerce sites APIs to get the list of ingredients. You can call your "smart" fridge to check if you have any of the ingredients at home.   
 
+Codes are in the "demo" folder.  
 
+GPT4 by OpenAI also has dual-modality capability.  
