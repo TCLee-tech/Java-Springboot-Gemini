@@ -1,0 +1,42 @@
+
+	public static byte[] imageBytes(String imagelink) throws IOException {
+
+	/*
+	Create URI object from imageUrl String.
+	From Java 20, URL constructor deprecated.
+	URL urlObj = new URL(url); won't work.
+	Alternatives are to use java.net.URI to parse imageUri to check for server authority. Then, convert to URL object using .toURL() method
+	https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/URI.html
+	Or, use URI.create() method.
+	https://www.baeldung.com/java-uri-create-and-new-uri
+	*/
+	URI uri = URI.create(imagelink);
+
+	//create URL object from URI object
+	URL url = uri.toURL();
+	System.out.println(url);
+
+	/* 
+	Create InputStream object. 
+	InputStream is for reading. OutputStream is for writing.
+ 	https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/InputStream.html
+ 	*/
+	ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+	try (InputStream inputStream = url.openStream(); outputStream;) {
+	byte[] buffer = new byte[1024];
+
+	//read() next byte of data from input stream. The value is returned as an int in the range 0 to 255. If no byte is available because the end of the stream has been reached, the value -1 is returned.
+	while (inputStream.read(buffer) != -1) {
+
+		//write to outputStream all the bytes from the buffer array, starting from 0, for length of buffer.
+		outputStream.write(buffer, 0, buffer.length);
+	}
+
+	//retrieve data from outputStream in form of a byte array.
+	//https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/ByteArrayOutputStream.html
+	return outputStream.toByteArray();
+	} 
+		
+	}
+
