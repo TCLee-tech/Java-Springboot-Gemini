@@ -12,14 +12,15 @@ If you need to, install [JDK 21](https://www.oracle.com/java/technologies/downlo
 
 Add the following entries to your computer's system environment variables:      
 
-Variable name: JAVA_HOME	Variable value: C:\Program Files\Java\jdk-21 [path to jdk exe file]  
-Variable name: Path		Variable value: C:\Program Files\Java\jdk-21\bin    
+| Variable name | Variable value |
+| --- | --- |
+| JAVA_HOME |	C:\Program Files\Java\jdk-21 [path to jdk exe file]  |
+| Path | C:\Program Files\Java\jdk-21\bin |   
+| MAVEN_HOME |	C:\Program Files\apache-maven-3.9.6 [path to unzipped Maven folder] |
+| Path |	%MAVEN_HOME%\bin |
 
-Variable name: MAVEN_HOME	Variable value: C:\Program Files\apache-maven-3.9.6 [path to unzipped Maven folder]  
-Variable name: Path		Variable value: %MAVEN_HOME%\bin  
-
-To verify, in cmd.exe, enter
-`java --version` and `mvn -version`.
+To verify, in cmd.exe, enter   
+`java --version` and `mvn -version`.  
 You should get info on your java and maven installations if successful.
 
 <hr>
