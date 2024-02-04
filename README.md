@@ -509,8 +509,11 @@ the output is:
 
 ![gemini pro output 3](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput3.jpg)   
 
-There are many potential use cases:. For example, you can call supermarket or e-commerce sites APIs to get the list of ingredients. You can call your "smart" fridge to check if you have any of the ingredients at home.   
+There are many interesting use cases: For example, you can call the APIs of an e-commerce retailer or a supermarket to get a list of matching ingredients. You can call your "smart" fridge to check if you have any of the ingredients at home. With a few more turns, you can feed the model with your current date, location and bank/card details, scheduling payment and delivery.  
+
+[![robotic kitchen](https://i.ibb.co/6WcJ5nx/robotic-kitchen.jpg)](https://youtu.be/6QWp605qaf4?si=V5sHdPmhEjdw346p)
 
 Codes are in the "demo" folder.  
 
 GPT4 by OpenAI has dual-modality capability too.  
+
