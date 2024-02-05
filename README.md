@@ -444,56 +444,56 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 
 
-    // TODO(developer): Replace these variables
-    String projectId = "groovy-orange-123456";
-    String location = "us-central1";
-    String modelName = "gemini-pro-vision";	
+	// TODO(developer): Replace these variables
+    	String projectId = "groovy-orange-123456";
+    	String location = "us-central1";
+    	String modelName = "gemini-pro-vision";	
 
 	//calling input() method
 	input(projectId, location, modelName);
-    }
+    	}
 
 
 	// Definition of input() method that takes 3 parameters
 	public static void input(String projectId, String location, String modelName) throws IOException {
 		
-		//one-time initialization of new VertexAI instance
-		try (VertexAI vertexAI = new VertexAI(projectId, location);) {
+	//one-time initialization of new VertexAI instance
+	try (VertexAI vertexAI = new VertexAI(projectId, location);) {
 
-		//Set parameters for GenAI model (max_output_tokens,temp,top-K, top-P)	
-		GenerationConfig generationConfig = GenerationConfig.newBuilder()
-							.setMaxOutputTokens(2048)
-							.setTemperature(0.4f)
-							.setTopK(32)
-							.setTopP(1)
-							.build();
+	//Set parameters for GenAI model (max_output_tokens,temp,top-K, top-P)	
+	GenerationConfig generationConfig = GenerationConfig.newBuilder()
+						.setMaxOutputTokens(2048)
+						.setTemperature(0.4f)
+						.setTopK(32)
+						.setTopP(1)
+						.build();
 
-		/* Image files must be in Google Cloud Storage
-		URI of image file - Only image/png and image/jpeg are supported. 258 tokens per image. 
-		Only gsutil of syntax gs://xxx.jpg and gs://yyy.png are supported.
-		 */
-		String imageUri = "gs://images_genai/Gordon Ramsay Beef Wellington.jpg";
+	/* Image files must be in Google Cloud Storage
+	URI of image file - Only image/png and image/jpeg are supported. 258 tokens per image. 
+	Only gsutil of syntax gs://xxx.jpg and gs://yyy.png are supported.
+	 */
+	String imageUri = "gs://images_genai/Gordon Ramsay Beef Wellington.jpg";
 
-		//query from user	
-		String query="Please give me the receipe to make this dish?";
+	//query from user	
+	String query="Please give me the receipe to make this dish?";
 
-		//gets Generative AI model
-		GenerativeModel model = new GenerativeModel(modelName, generationConfig,vertexAI);
+	//gets Generative AI model
+	GenerativeModel model = new GenerativeModel(modelName, generationConfig,vertexAI);
 
-		//an ArrayList to store inputs to GenAI model
-		List<Content> contents = new ArrayList<>();	
+	//an ArrayList to store inputs to GenAI model
+	List<Content> contents = new ArrayList<>();	
 
-		//pass in image bytes and query about image
-		contents.add(ContentMaker
-			.fromMultiModalData(
-				PartMaker.fromMimeTypeAndData("image/jpeg", imageUri), query)
-				);
+	//pass in image bytes and query about image
+	contents.add(ContentMaker
+		.fromMultiModalData(
+			PartMaker.fromMimeTypeAndData("image/jpeg", imageUri), query)
+			);
 
-		//model's generateContentStream method
-		ResponseStream<GenerateContentResponse> responseStream = model.generateContentStream(contents);
+	//model's generateContentStream method
+	ResponseStream<GenerateContentResponse> responseStream = model.generateContentStream(contents);
 
-		responseStream.stream().forEach(System.out::println);
-		}
+	responseStream.stream().forEach(System.out::println);
+	}
 	}	
 }
 ```   
@@ -509,7 +509,7 @@ the output is:
 
 ![gemini pro output 3](https://github.com/TCLee-tech/Java-Springboot-Gemini/blob/8c582aa48c370fa51f28fcacb67d220b1e09eb0c/GeminiOutput3.jpg)   
 
-There are many interesting use cases: For example, you can call the APIs of an e-commerce retailer or a supermarket to get a list of matching ingredients. You can call your "smart" fridge to check if you have any of the ingredients at home. With a few more turns, you can feed the model with your current date, location and bank/card details, scheduling payment and delivery.  
+There are many interesting use cases: For example, you can call the APIs of an e-commerce retailer or a supermarket to get a list of matching ingredients. You can call your "smart" fridge to check if you have any of the ingredients at home. With a few more turns, you can feed the model with a delivery date and address.  
 
 [![robotic kitchen](https://i.ibb.co/6WcJ5nx/robotic-kitchen.jpg)](https://youtu.be/6QWp605qaf4?si=V5sHdPmhEjdw346p)
 
